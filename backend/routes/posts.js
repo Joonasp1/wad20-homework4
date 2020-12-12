@@ -23,6 +23,7 @@ router.get('/', authorize, (request, response) => {
 });
 
 router.post('/', authorize,  (request, response) => {
+<<<<<<< HEAD
     console.log("Hello")
     // Endpoint to create a new post
     let params = {
@@ -34,11 +35,17 @@ router.post('/', authorize,  (request, response) => {
         response.status(201).json()
     });
     response.json([]);
+=======
+
+    // Endpoint to create a new post
+
+>>>>>>> 5bc3dfe8aca5f10e11a585a4e00b202394c20411
 });
 
 
 router.put('/:postId/likes', authorize, (request, response) => {
 
+<<<<<<< HEAD
     let postId = request.params.postId;
     let userId = request.currentUser.id;
     // Endpoint for current user to like a post
@@ -62,11 +69,15 @@ router.put('/:postId/likes', authorize, (request, response) => {
 
     });
 
+=======
+    // Endpoint for current user to like a post
+>>>>>>> 5bc3dfe8aca5f10e11a585a4e00b202394c20411
 });
 
 router.delete('/:postId/likes', authorize, (request, response) => {
 
     // Endpoint for current user to unlike a post
+<<<<<<< HEAD
     let postId = request.params.postId;
     let userId = request.currentUser.id;
 
@@ -88,6 +99,8 @@ router.delete('/:postId/likes', authorize, (request, response) => {
         }
 
     });
+=======
+>>>>>>> 5bc3dfe8aca5f10e11a585a4e00b202394c20411
 
 });
 
