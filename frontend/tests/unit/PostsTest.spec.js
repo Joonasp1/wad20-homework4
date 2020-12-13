@@ -103,4 +103,35 @@ describe('Posts', () => {
     it('1 == 1', function () {
         expect(true).toBe(true)
     });
+
+    it('Correct amount of posts', function () {
+        expect(testData.length).toEqual(wrapper.findAll('div.post').length);
+    });
+
+    it('image media types correct', function () {
+        let posts = wrapper.findAll('div.post');
+        let postWithImage = posts.at(0);
+
+        expect(postWithImage.find('div.post-image').exists()).toBe(true);
+
+        expect(postWithImage.find('div.post-image').find('img').exists()).toBe(true);
+        expect(postWithImage.find('div.post-image').find('video').exists()).toBe(false);
+    });
+
+    it('null media types correct', function () {
+        let posts = wrapper.findAll('div.post');
+        let postWithNull = posts.at(1);
+
+        expect(postWithNull.find('div.post-image').exists()).toBe(false);
+    });
+
+    it('video media types correct', function () {
+        let posts = wrapper.findAll('div.post');
+        let postWithVideo = posts.at(2);
+
+        expect(postWithVideo.find('div.post-image').exists()).toBe(true);
+
+        expect(postWithVideo.find('div.post-image').find('img').exists()).toBe(false);
+        expect(postWithVideo.find('div.post-image').find('video').exists()).toBe(true);
+    });
 });
