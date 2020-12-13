@@ -2,6 +2,7 @@ import {mount, createLocalVue} from '@vue/test-utils'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Posts from "../../src/components/Posts.vue";
+import moment from "moment";
 
 const localVue = createLocalVue();
 
@@ -133,5 +134,13 @@ describe('Posts', () => {
 
         expect(postWithVideo.find('div.post-image').find('img').exists()).toBe(false);
         expect(postWithVideo.find('div.post-image').find('video').exists()).toBe(true);
+    });
+
+    it('Correct date type', function () {
+        let posts = wrapper.findAll('div.post');
+        let testPost = posts.at(0);
+        let createTime = testPost.find('span.post-author > small');
+
+        expect(createTime.text()).toEqual(moment(createTime.text()).format('LLLL'));
     });
 });
